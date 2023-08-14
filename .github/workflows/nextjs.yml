@@ -34,6 +34,7 @@ jobs:
           touch .env
           echo CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }} >> .env
           echo BLA=${{ secrets.TESTSECRET }} >> .env
+          echo BLAI=${{ secrets.TESTVAR }} >> .env
           cat .env
           exit 0
       - name: Checkout
