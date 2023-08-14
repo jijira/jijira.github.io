@@ -33,10 +33,10 @@ jobs:
         run: |
           touch .env
           echo CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }} >> .env
-          echo ${{ secrets.CONTENTFUL_SPACE_ID }} >> $GITHUB_OUTPUT
           echo CONTENTFUL_ACCESS_TOKEN=${{ vars.CONTENTFUL_ACCESS_TOKEN }} >> .env
           echo CONTENTFUL_PREVIEW_ACCESS_TOKEN=${{ vars.CONTENTFUL_PREVIEW_ACCESS_TOKEN }} >> .env
           echo CONTENTFUL_PREVIEW_SECRET=${{ vars.CONTENTFUL_PREVIEW_SECRET }} >> .env
+          cat .env
           exit 0
       - name: Checkout
         uses: actions/checkout@v3
