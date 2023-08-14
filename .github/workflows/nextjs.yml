@@ -12,12 +12,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-env:
-  CONTENTFUL_ACCESS_TOKEN: ${{ vars.CONTENTFUL_ACCESS_TOKEN }}
-  CONTENTFUL_PREVIEW_ACCESS_TOKEN: ${{ vars.CONTENTFUL_PREVIEW_ACCESS_TOKEN }}
-  CONTENTFUL_PREVIEW_SECRET: ${{ vars.CONTENTFUL_PREVIEW_SECRET }}
-  CONTENTFUL_SPACE_ID: ${{ vars.CONTENTFUL_SPACE_ID }}
-
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -35,6 +29,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Create env file
+        run: |
+          touch .env
+          echo CONTENTFUL_ACCESS_TOKEN=${{ vars.CONTENTFUL_ACCESS_TOKEN }} >> .env
+          echo CONTENTFUL_PREVIEW_ACCESS_TOKEN=${{ vars.CONTENTFUL_PREVIEW_ACCESS_TOKEN }} >> .env
+          echo CONTENTFUL_PREVIEW_SECRET=${{ vars.CONTENTFUL_PREVIEW_SECRET }} >> .env
+          echo CONTENTFUL_SPACE_ID=${{ vars.CONTENTFUL_SPACE_ID }} >> .env
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
