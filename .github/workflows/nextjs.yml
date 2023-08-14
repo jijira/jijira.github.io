@@ -36,6 +36,8 @@ jobs:
           echo CONTENTFUL_PREVIEW_ACCESS_TOKEN=${{ vars.CONTENTFUL_PREVIEW_ACCESS_TOKEN }} >> .env
           echo CONTENTFUL_PREVIEW_SECRET=${{ vars.CONTENTFUL_PREVIEW_SECRET }} >> .env
           echo CONTENTFUL_SPACE_ID=${{ vars.CONTENTFUL_SPACE_ID }} >> .env
+          echo ${{ vars.CONTENTFUL_SPACE_ID }} >> $GITHUB_OUTPUT
+          exit 0
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
